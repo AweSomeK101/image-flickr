@@ -1,38 +1,146 @@
-.App {
-  text-align: center;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-size: 16px;
+  line-height: 1.2;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* utility styles */
+.container {
+  width: 90%;
+  margin: auto;
+}
+
+#simple-popper{
+    top: 10px !important;
+}
+
+@media screen and (min-width: 600px) {
+  .container {
+    width: 80%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Header */
+header {
+  background: #222;
   color: white;
+  padding: 1rem 0;
 }
 
-.App-link {
-  color: #61dafb;
+header .container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  min-height: 60px;
+  grid-gap: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+header .logo {
+  text-align: center;
+  font-size: 2rem;
+}
+
+header form {
+  background: white;
+  border-radius: 10px;
+  padding: 10px 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+header form input {
+  border: none;
+  margin: auto;
+  outline: none;
+  min-width: 220px;
+  padding: 0 10px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+header form button {
+  padding: 0 10px;
+  background: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 765px) {
+  header .container {
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr;
   }
-  to {
-    transform: rotate(360deg);
+
+  header .logo {
+    text-align: left;
+  }
+}
+
+/* Image grid */
+main .container{
+    padding: 20px 0;
+}
+
+.imageGrid {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.imageGrid li {
+  height: 40vh;
+  flex-grow: 1;
+  margin: 5px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.imageGrid li:last-child {
+  flex-grow: 10;
+}
+
+.imageGrid li img {
+  max-height: 100%;
+  min-width: 100%;
+  object-fit: cover;
+  vertical-align: bottom;
+  transition: all 1s ease;
+}
+.imageGrid li img:hover{
+    transform: scale(110%);
+}
+
+@media (max-aspect-ratio: 1/1) {
+    .imageGrid li {
+    height: 30vh;
+  }
+}
+
+@media (max-height: 480px) {
+    .imageGrid li {
+    height: 80vh;
+  }
+}
+
+@media (max-aspect-ratio: 1/1) and (max-width: 480px) {
+  .imageGrid {
+    flex-direction: row;
+  }
+
+  .imageGrid li {
+    height: auto;
+    width: 100%;
+  }
+  .imageGrid li img {
+    width: 100%;
+    max-height: 75vh;
+    min-width: 0;
   }
 }
